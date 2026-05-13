@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ClendHome</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HEADER -->
+
+<div class="header card">
+
+<img src="logo.png" class="logo">
+
+<div>
+
+<h1>ClendHome</h1>
+
+<p>Layanan Rumah Modern</p>
+
+</div>
+
+</div>
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="card">
+
+<h2>Login ClendHome</h2>
+
+<input 
+type="text" 
+id="username" 
+placeholder="Masukkan Nama"
+>
+
+<input 
+type="password" 
+id="password" 
+placeholder="Masukkan Password"
+>
+
+<button onclick="login()">
+Masuk
+</button>
+
+<div class="info-login">
+
+<p>Silahkan login sesuai akun masing-masing</p>
+
+<p>Pelanggan : 1234</p>
+
+<p>Pekerja : 12345</p>
+
+</div>
+
+</div>
+
+<!-- ADMIN -->
+
+<div id="adminPage" class="hidden">
+
+    <button style="background:red" onclick="resetDataAdmin()">
+        🗑 Hapus Semua Data (Admin)
+    </button>
+
+<div class="card">
+
+<h2>Dashboard Admin</h2>
+
+<h3 id="totalPemasukan">
+Total Pemasukan : Rp 0
+</h3>
+
+<div class="menu-grid">
+
+<button onclick="tampilPesanan()">
+Lihat Pesanan
+</button>
+
+<button onclick="tampilPekerjaAdmin()">
+Lihat Pekerja
+</button>
+
+<button onclick="logout()">
+Keluar
+</button>
+
+</div>
+
+</div>
+
+<div id="adminPesanan"></div>
+
+</div>
+
+<!-- PELANGGAN -->
+
+<div id="pelangganPage" class="hidden">
+
+<div class="card">
+
+<h2>Pilih Layanan</h2>
+
+<div class="menu-grid">
+
+<div class="menu" onclick="pilihLayanan('Antar Galon')">
+
+💧
+
+<h3>Antar Galon</h3>
+
+</div>
+
+<div class="menu" onclick="pilihLayanan('Jemput Sampah')">
+
+🗑️
+
+<h3>Jemput Sampah</h3>
+
+</div>
+
+<div class="menu" onclick="pilihLayanan('Bersih Rumah')">
+
+🏠
+
+<h3>Bersih Rumah</h3>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FORM PEMESANAN -->
+
+<div class="card">
+
+<h2 id="judulLayanan">
+Pesan Layanan
+</h2>
+
+<input 
+type="number" 
+id="jumlah" 
+placeholder="Jumlah"
+>
+
+<input 
+type="number" 
+id="jarak" 
+placeholder="Jarak Rumah (KM)"
+>
+
+<!-- KHUSUS BERSIH RUMAH -->
+
+<div id="boxPekerjaanRumah" class="hidden">
+
+<textarea 
+id="pekerjaanRumah"
+placeholder="Contoh : sapu rumah, pel rumah, gosok baju, cuci baju">
+</textarea>
+
+</div>
+
+<!-- PEMBAYARAN -->
+
+<select id="pembayaran" onchange="cekPembayaran()">
+
+<option value="manual">
+Pembayaran Manual
+</option>
+
+<option value="transfer">
+Transfer
+</option>
+
+</select>
+
+<!-- QR -->
+
+<div id="qrBox" class="hidden qr-box">
+
+<img 
+class="qr"
+src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=CLENDHOME"
+>
+
+<p>Scan QR Pembayaran</p>
+
+<input type="file">
+
+</div>
+
+<!-- BIODATA -->
+
+<h2>Biodata</h2>
+
+<input 
+type="text" 
+id="nama" 
+placeholder="Nama Lengkap"
+>
+
+<input 
+type="text" 
+id="telepon" 
+placeholder="Nomor Telepon"
+>
+
+<textarea 
+id="alamat" 
+placeholder="Alamat Rumah">
+</textarea>
+
+<button onclick="buatPesanan()">
+Pesan Sekarang
+</button>
+
+</div>
+
+<div id="hasilPesanan"></div>
+
+</div>
+
+<!-- PEKERJA -->
+
+<div id="pekerjaPage" class="hidden">
+
+<div id="daftarPekerjaBox" class="card">
+
+<h2>Daftar Pekerja</h2>
+
+<input type="text" id="namaPekerja" placeholder="Nama Pekerja">
+
+<input type="text" id="teleponPekerja" placeholder="Nomor Telepon">
+
+<textarea id="alamatPekerja" placeholder="Alamat"></textarea>
+
+<select id="jobPekerja">
+    <option>Antar Galon</option>
+    <option>Jemput Sampah</option>
+    <option>Bersih Rumah</option>
+</select>
+
+<button onclick="ambilKerja()">
+Daftar Pekerja
+</button>
+
+</div>
+
+<div id="dataKerja"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
